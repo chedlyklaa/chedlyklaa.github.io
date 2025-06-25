@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Portfolio.css';
 import { Github, Linkedin, Mail, Phone, MapPin, Award, Users, ExternalLink, Code, Database, Settings } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Portfolio = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,11 @@ const Portfolio = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+
+  useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init("zRgomf2OMXQcxAlKd"); // You'll need to replace this with your actual EmailJS public key
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -21,13 +27,32 @@ const Portfolio = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('');
     
-    // Simulate form submission (replace with actual form handling)
-    setTimeout(() => {
-      setSubmitStatus('Thank you! Your message has been sent successfully.');
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const result = await emailjs.send(
+        'service_z4nt6m5', // Replace with your EmailJS service ID
+        'template_yush18h', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'chedlyklaa11@gmail.com', // Your email address
+        }
+      );
+      console.log(result);
+      if (result.status === 200) {
+        setSubmitStatus('Thank you! Your message has been sent successfully.');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('Failed to send message. Please try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const scrollToSection = (sectionId) => {
@@ -42,7 +67,7 @@ const Portfolio = () => {
       title: "Software Developer",
       company: "Saydalid",
       companyUrl: "https://saydalid.com",
-      period: "March 2024 - Present",
+      period: "March 2024 - March 2025",
       description: "Full-stack development with modern technologies, implementing monitoring solutions and working with agile methodologies.",
       technologies: ["Backend", "Frontend", "CI/CD", "Grafana", "Python", "Scrum"],
       achievements: [
@@ -247,7 +272,9 @@ const Portfolio = () => {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-avatar">CK</div>
+          <div className="hero-avatar">
+            <img src="https://media.licdn.com/dms/image/v2/C5603AQGTkbBMUh4DmQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1640377800135?e=1756339200&v=beta&t=iAN_oMPw3TNE4WT4la3Lx-_wb1ymTpfOMVBbr3kFPO4" alt="My Avatar" className="avatar-image" />
+          </div>
           </div>
         </div>
       </section>
@@ -504,7 +531,7 @@ const Portfolio = () => {
             <div className="contact-info-section">
               <h3>Connect with me</h3>
               <div className="contact-links">
-                <a href="mailto:chedlyklaa11@gmail.com" className="contact-link">
+                <a href="mailto:chedlyklaa11@gmail.com" className="contact-link" target="_blank" rel="noopener noreferrer">
                   <Mail size={24} />
                   <span>chedlyklaa11@gmail.com</span>
                 </a>
