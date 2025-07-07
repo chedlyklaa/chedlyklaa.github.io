@@ -1,0 +1,198 @@
+/* Physiotherapy Project Page Styles */
+
+.physio-fullpage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 3rem 1rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.physio-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.physio-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+}
+
+.physio-preview {
+  color: #1976d2;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.physio-main-content {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.physio-main-left {
+  flex: 2;
+  min-width: 270px;
+}
+
+.physio-main-right {
+  flex: 1.2;
+  min-width: 220px;
+}
+
+.physio-description-section,
+.physio-features-section {
+  margin-bottom: 2rem;
+}
+
+.physio-description-section h2,
+.physio-features-section h2,
+.physio-images-section h2,
+.physio-tech-section h2 {
+  color: #1976d2;
+  font-size: 1.25rem;
+  margin-bottom: 0.7rem;
+}
+
+.physio-description-section p {
+  font-size: 1.08rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.physio-features-list {
+  padding-left: 1.2rem;
+}
+
+.physio-features-list li {
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.physio-images-placeholder {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.physio-image-box {
+  width: 110px;
+  height: 90px;
+  background: #fff;
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  border: 2px solid #fff;
+}
+
+.physio-tech-section {
+  margin-top: 2.5rem;
+}
+
+.physio-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.physio-tech-list li {
+  background: #fff;
+  color: #1976d2;
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.98rem;
+  list-style: none;
+}
+
+.physio-repo-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #fff;
+  color: #1976d2;
+  padding: 0.6rem 1.3rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+  border: 2px solid #fff;
+}
+
+.physio-repo-link:hover {
+  background: #e3f2fd;
+  color: #1251a3;
+  border: 2px solid #e3f2fd;
+}
+
+.physio-big-box {
+  max-width: 1100px;
+  margin: 3rem auto 3rem auto;
+  background: #102347;
+  border-radius: 2rem;
+  box-shadow: 0 6px 32px rgba(25, 118, 210, 0.10), 0 2px 8px rgba(25, 118, 210, 0.06);
+  padding: 2.5rem 1.5rem;
+  color: #fff;
+}
+
+.physio-header .physio-title,
+.physio-header .physio-preview,
+.physio-description-section h2,
+.physio-features-section h2,
+.physio-images-section h2,
+.physio-tech-section h2 {
+  color: #fff;
+}
+
+.physio-description-section p,
+.physio-features-list li {
+  color: #c7e0ff;
+}
+
+.physio-tech-list li {
+  background: #fff;
+  color: #1976d2;
+}
+
+.physio-image-box {
+  background: #fff;
+  color: #1976d2;
+  border: 2px solid #fff;
+}
+
+.physio-repo-link {
+  background: #fff;
+  color: #1976d2;
+  border: 2px solid #fff;
+}
+
+.physio-repo-link:hover {
+  background: #e3f2fd;
+  color: #1251a3;
+  border: 2px solid #e3f2fd;
+}
+
+body {
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .physio-main-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .physio-main-right {
+    min-width: 0;
+  }
+  .physio-big-box {
+    padding: 1.2rem 0.5rem;
+    border-radius: 1rem;
+  }
+} 

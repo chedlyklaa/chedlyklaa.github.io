@@ -140,6 +140,16 @@ body {
   width: 80%;
 }
 
+.games-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.games-link:hover::after {
+  width: 80%;
+}
+
 .mobile-menu {
   display: none;
 }
@@ -723,61 +733,50 @@ body {
 
 /* Skills Section */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .skill-category {
-  background: var(--secondary-color);
+  flex: 1;
+  min-width: 250px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-lg);
-  padding: 2rem;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-category::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-accent);
 }
 
 .skill-category:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--accent-color);
+  box-shadow: var(--shadow-lg);
 }
 
 .skill-category-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
 .category-icon {
   color: var(--accent-color);
-  background: rgba(59, 130, 246, 0.1);
-  padding: 0.75rem;
-  border-radius: var(--border-radius);
 }
 
 .skill-category-title {
-  font-family: 'Raleway', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
+  margin: 0;
 }
 
 .skills-list {
-  display: grid;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .skill-item {
@@ -797,17 +796,6 @@ body {
   background: rgba(59, 130, 246, 0.1);
   border-color: rgba(59, 130, 246, 0.2);
   transform: translateX(4px);
-}
-
-.skill-icon {
-  font-size: 1.25rem;
-  width: 30px;
-  text-align: center;
-}
-
-.skill-name {
-  color: var(--text-secondary);
-  font-weight: 500;
 }
 
 .skill-tooltip {
@@ -860,6 +848,28 @@ body {
 
 .tooltip-content p strong {
   color: var(--accent-light);
+}
+
+@media (max-width: 1200px) {
+  .skills-grid {
+    flex-direction: column;
+  }
+  
+  .skill-category {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-tooltip {
+    width: 240px;
+    left: 0;
+    transform: none;
+  }
+  
+  .skill-item:hover .skill-tooltip {
+    transform: translateY(-10px);
+  }
 }
 
 /* Achievements Section */
@@ -1230,5 +1240,426 @@ body {
   
   .skill-item:hover .skill-tooltip {
     transform: translateX(0) translateY(-10px);
+  }
+}
+
+/* Games Section */
+.games-section {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.games-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.games-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.game-card {
+  background: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--accent-color);
+}
+
+.game-card:hover::before {
+  transform: scaleX(1);
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.game-icon {
+  font-size: 3rem;
+  background: var(--gradient-accent);
+  width: 80px;
+  height: 80px;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: var(--shadow-lg);
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.game-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.game-category {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.game-difficulty {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.difficulty-easy {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.difficulty-medium {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.difficulty-hard {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error-color);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.game-preview {
+  color: var(--accent-light);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.game-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.game-status {
+  margin-bottom: 1.5rem;
+}
+
+.status-badge {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.play-button {
+  width: 100%;
+  background: var(--gradient-accent);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.play-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.play-icon {
+  font-size: 1.2rem;
+}
+
+.games-footer {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.games-note {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.games-tech h4 {
+  color: var(--accent-light);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tech-item {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Responsive Design for Games */
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .game-card {
+    padding: 1.5rem;
+  }
+  
+  .game-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .game-title {
+    font-size: 1.25rem;
+  }
+  
+  .game-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .tech-stack {
+    gap: 0.5rem;
+  }
+  
+  .tech-item {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Games Link Section */
+.games-link-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.games-link-section h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.games-link-section p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.games-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gradient-accent);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--shadow-lg);
+}
+
+.games-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Styles specific to the physiotherapy project details page */
+.physio-details-bg {
+  background: #1976d2;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.physio-project-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.06);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem 0;
+  animation: fadeInPhysio 0.7s;
+}
+
+@keyframes fadeInPhysio {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.physio-project-card .project-description {
+  color: #fff;
+  background: #1976d2;
+  padding: 1rem 1.2rem;
+  border-radius: 0.7rem;
+  margin-bottom: 2rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.physio-project-card .project-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.physio-project-card .project-title {
+  color: #1a237e;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.physio-project-card .project-icon {
+  font-size: 2.2rem;
+}
+
+.physio-project-card .project-preview {
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.physio-project-card .project-technologies {
+  margin-bottom: 1.2rem;
+}
+
+.physio-project-card .tech-badge {
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.5rem;
+  font-size: 0.98rem;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+.physio-project-card .project-achievements {
+  margin-top: 1.2rem;
+}
+
+.physio-project-card .project-achievements h4 {
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+}
+
+.physio-project-card .project-achievements ul {
+  padding-left: 1.2rem;
+}
+
+.physio-project-card .project-achievements li {
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .physio-project-card {
+    padding: 1.2rem 0.5rem;
+  }
+  .physio-project-card .project-title {
+    font-size: 1.2rem;
   }
 }

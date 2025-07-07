@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Portfolio.css';
-import { Github, Linkedin, Mail, Phone, MapPin, Award, Users, ExternalLink, Code, Database, Settings } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin, Award, Users, ExternalLink, Code, Database, Settings, Trophy } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
   const [formData, setFormData] = useState({
@@ -109,75 +110,181 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "Folla and Follo",
-      description: "Multiplayer collaborative game where players work together to collect items and reach the finish line. Achieved 90% completion rate of planned functionalities.",
-      technologies: ["Unity", "C#"],
-      achievements: ["90% completion rate", "Multiplayer functionality", "Creative problem-solving"],
+      title: "Folla and Follo – 2D Cooperative Multiplayer Platformer",
+      description: "Folla and Follo is a Unity-based 2D multiplayer platformer where two players must collaborate to overcome obstacles and complete levels. The core mechanic revolves around teamwork: players must help each other navigate traps, solve physics-based puzzles, and collect all bananas and cherries scattered across the map before they can unlock the flag and advance to the next level. This design encourages communication and strategy, as neither player can succeed alone.",
+      technologies: ["Unity", "C#", "Unity Multiplayer API", "Unity Animator", "Tilemap System"],
+      achievements: [
+        "2D cooperative platformer for two players",
+        "Collectible system: bananas and cherries must be gathered to unlock the flag",
+        "Physics-based puzzles requiring both players' collaboration",
+        "Multiplayer support (local and networked play)",
+        "Hand-crafted levels with increasing difficulty and creative challenges"
+      ],
       type: "game",
       icon: "🎮",
-      preview: "A Unity-based multiplayer game with collaborative mechanics"
+      preview: "A Unity-based 2D cooperative multiplayer platformer"
     },
     {
-      title: "SEO System",
-      description: "A comprehensive SEO management system with real-time analytics that improved keyword rankings by 15% and reduced data analysis time by 25%.",
-      technologies: ["Angular", "Node.js", "MongoDB", "Google Search Console"],
-      achievements: ["15% improvement in keyword rankings", "25% reduction in analysis time", "User-friendly dashboard"],
+      title: "SEO Management System – Real-time Analytics Dashboard",
+      description: "I developed a comprehensive SEO management platform to simplify the optimization of websites and monitor their search engine performance in real-time. The system integrates data from Google Search Console and provides a dashboard for visualizing critical SEO metrics such as keyword rankings, backlinks, and crawl errors. It also includes tools to manage keywords, generate sitemaps, and create robots.txt files to guide search engine crawlers effectively. The architecture leverages Angular for a dynamic and responsive frontend, Node.js for backend API services, and MongoDB for structured data storage.",
+      technologies: [
+        "Angular", "Angular Universal (SSR)", "Node.js", "Express.js", "MongoDB", 
+        "Google Search Console API", "JWT Authentication", "Syncfusion Charts", 
+        "Angular Material", "Git", "Postman"
+      ],
+      achievements: [
+        "SEO analytics dashboard with real-time insights",
+        "Keyword and content management tools",
+        "Sitemap and robots.txt generator",
+        "User authentication and role-based access control",
+        "Server-side rendering for improved SEO crawlability"
+      ],
       type: "web",
       icon: "📊",
-      preview: "Real-time SEO analytics and management dashboard"
+      preview: "Comprehensive SEO management platform with real-time analytics"
     },
     {
+      title: "VR & AI-powered Physiotherapy Assistant",
+      description: "A VR application enhanced with AI to help physiotherapists deliver personalized rehabilitation. Patients perform exercises in an immersive VR environment, guided by an AI avatar that provides real-time feedback. Therapists can monitor progress and adjust plans via a secure dashboard.",
+      technologies: ["Unity 3D", "Meta Quest 2", "Node.js", "MongoDB", "Python (Scikit-learn, Flask)", "REST APIs"],
+      achievements: [
+        "VR avatar for guided physiotherapy exercises",
+        "Real-time motion tracking and feedback",
+        "AI-generated exercise recommendations",
+        "Therapist dashboard for patient monitoring and analytics",
+        "Secure patient data management"
+      ],
+      type: "vr",
+      icon: "🦾",
+      preview: "Immersive VR & AI assistant for physiotherapy"
+    },
+    {
+      title: "Information Retrieval on Social Media Data: Gaza Case Study",
+      description: "As part of a group project, I designed and implemented a system to index and search tweets related to the Gaza genocide using modern information retrieval techniques. The project included linguistic preprocessing (tokenization, stemming, cleaning), building an index with PyTerrier, and experimenting with retrieval models like TF-IDF, BM25, and DFR_BM25. The system was evaluated with standard IR metrics such as MAP, P@5, and R-Precision. Our analysis showed that BM25 outperformed other models on short-text social media data.",
+      technologies: ["Python (NLTK, PyTerrier)", "JSON", "TSV", "Evaluation scripts"],
+      achievements: [
+        "Data collection from Twitter (500 tweets)",
+        "Linguistic preprocessing pipeline (tokenization, stemming)",
+        "Implementation of TF-IDF, BM25, PL2 models",
+        "Evaluation with qrels using MAP, P@K",
+        "Analysis of retrieval performance"
+      ],
+      type: "data",
+      icon: "🔍",
+      preview: "Information retrieval system for social media data analysis"
+    },
+    {
+      title: "3D Online Cinema with Visioconferencing",
+      description: "I developed an interactive 3D online cinema platform that combines real-time video conferencing with a shared movie-watching experience. Users can enter a virtual cinema environment built with Three.js, choose seats, and watch movies together while interacting via live audio and video chat. The platform provides a realistic spatial experience, allowing users to look around the cinema, see avatars of other participants, and enjoy synchronized playback.",
+      technologies: [
+        "React.js", "Three.js", "WebGL", "Node.js", "Express.js", "WebSocket", 
+        "WebRTC", "Socket.io", "JWT", "MongoDB", "Tailwind CSS", "Shadcn UI",
+        "react-three-fiber", "zustand", "simple-peer", "react-router", "axios"
+      ],
+      achievements: [
+        "Immersive 3D cinema built with Three.js and React Three Fiber",
+        "Video conferencing with WebRTC for real-time communication",
+        "Synchronized movie playback for all connected users",
+        "Avatar system with user position and orientation",
+        "Secure authentication and session management"
+      ],
+      type: "3d",
+      icon: "🎬",
+      preview: "Interactive 3D cinema with real-time video conferencing"
+    },
+    {
+      title: "Carpooling Mobile App with Flutter",
+      description: "I developed a mobile carpooling (covoiturage) application that connects drivers and passengers for shared trips. Built with Flutter, the app offers a clean and responsive interface for creating, browsing, and booking rides. It integrates real-time location tracking and secure user authentication to ensure a safe and reliable experience. The backend, powered by Node.js and a SQL database, manages user data, trip information, and messaging between participants.",
+      technologies: [
+        "Flutter (Dart)", "Node.js", "Express.js", "MySQL/PostgreSQL", 
+        "Google Maps API", "Firebase", "RESTful APIs", "Dio", 
+        "Provider/Riverpod", "JWT"
+      ],
+      achievements: [
+        "User registration & authentication",
+        "Ride creation and search (by location, date, and seats available)",
+        "Interactive map for route visualization",
+        "Secure booking and in-app messaging between drivers & passengers",
+        "Backend API with SQL database for trip and user management"
+      ],
+      type: "mobile",
+      icon: "🚗",
+      preview: "Mobile carpooling app connecting drivers and passengers"
+    },
+    {
+      title: "3D Golf Scene with Animation and Physics",
+      description: "I designed and implemented an interactive 3D golf scene as part of a modeling and animation project. Using Blender, I created custom 3D models such as the golf ball, terrain, trees, and flag. The scene was then imported into Unity, where I added animations and realistic physics to simulate golf ball movement, collisions, and environmental interactions. The project combines creative modeling with technical implementation to produce an engaging and dynamic virtual environment.",
+      technologies: [
+        "Blender", "Unity 3D (C#)", "Unity Physics", "Unity Particle System", 
+        "Unity Animator"
+      ],
+      achievements: [
+        "Custom 3D assets: terrain, trees, golf clubs, ball, and hole flag",
+        "Realistic golf ball physics with trajectory and collision detection",
+        "Animations for environmental elements (trees swaying, flag waving)",
+        "Interactive scene playable in Unity"
+      ],
+      type: "3d",
+      icon: "⛳",
+      preview: "Interactive 3D golf scene with realistic physics and animations"
+    }
+  ];
+
+  const waitingList = [
+    {
       title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard. Built with modern web technologies and responsive design.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-      achievements: ["Payment gateway integration", "Real-time inventory tracking", "Mobile-responsive design"],
+      description: "Full-stack e-commerce solution with payment integration, inventory management, admin dashboard, and advanced AI-powered features for personalized shopping and smart inventory. Built with modern web technologies and responsive design.",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux", "AI"],
+      achievements: ["Payment gateway integration", "Real-time inventory tracking", "Mobile-responsive design", "AI-driven product recommendations"],
       type: "web",
       icon: "🛒",
-      preview: "Complete online shopping platform with payment processing"
+      preview: "Complete online shopping platform with payment processing and AI integration"
     },
     {
       title: "Task Management App",
-      description: "Collaborative task management application with real-time updates, team collaboration features, and progress tracking. Includes drag-and-drop functionality.",
-      technologies: ["React", "Firebase", "Material-UI", "Socket.io"],
-      achievements: ["Real-time collaboration", "Drag-and-drop interface", "Team management features"],
+      description: "Collaborative task management application with real-time updates, team collaboration features, and progress tracking. AI integration planned for smart task suggestions and automation.",
+      technologies: ["React", "Firebase", "Material-UI", "Socket.io", "AI (planned)"],
+      achievements: ["Real-time collaboration", "Drag-and-drop interface", "Team management features", "AI-powered features coming soon"],
       type: "web",
       icon: "📋",
-      preview: "Team collaboration tool with real-time task management"
-    },
-    {
-      title: "Weather Dashboard",
-      description: "Interactive weather application with location-based forecasts, historical data visualization, and customizable alerts. Features beautiful data visualization.",
-      technologies: ["JavaScript", "Chart.js", "OpenWeather API", "CSS3"],
-      achievements: ["Real-time weather data", "Interactive charts", "Location-based forecasts"],
-      type: "web",
-      icon: "🌤️",
-      preview: "Interactive weather dashboard with data visualization"
+      preview: "Team collaboration tool with real-time task management (in waiting list)"
     }
   ];
 
   const skills = {
     "Languages": [
       { name: "JavaScript", icon: "⚡", source: "Self-taught & University Projects", usage: "React development, Node.js backend, browser automation" },
-      { name: "Python", icon: "🐍", source: "Work at Saydalid & Personal Projects", usage: "Data analysis, automation scripts, API development" },
+      { name: "Python", icon: "🐍", source: "Work at Saydalid & Personal Projects", usage: "Data analysis, automation scripts, API development, AI/ML" },
       { name: "Java", icon: "☕", source: "University Courses", usage: "Spring Boot applications, Android development" },
-      { name: "C#", icon: "🎯", source: "Unity Game Development", usage: "Game development, desktop applications" },
+      { name: "C#", icon: "🎯", source: "Unity Game Development", usage: "Game development, desktop applications, Unity scripting" },
       { name: "C++", icon: "⚙️", source: "University Computer Science Program", usage: "System programming, algorithms implementation" },
-      { name: "SQL", icon: "🗄️", source: "Database courses & Work projects", usage: "Database design, complex queries, optimization" }
+      { name: "SQL", icon: "🗄️", source: "Database courses & Work projects", usage: "Database design, complex queries, optimization" },
+      { name: "Dart", icon: "🎯", source: "Carpooling Mobile App", usage: "Flutter mobile development, cross-platform apps" }
     ],
-    "Frameworks": [
+    "Frameworks & Libraries": [
       { name: "React", icon: "⚛️", source: "Current work at Saydalid", usage: "Component development, state management, hooks" },
       { name: "Angular", icon: "🅰️", source: "Ijeni internship & SEO System project", usage: "SPA development, TypeScript integration" },
       { name: "Node.js", icon: "🟢", source: "Work projects & Internships", usage: "REST APIs, real-time applications, microservices" },
-      { name: "Unity", icon: "🎮", source: "Game development project", usage: "3D game development, C# scripting" },
+      { name: "Unity 3D", icon: "🎮", source: "Game development projects", usage: "3D game development, C# scripting, VR/AR" },
+      { name: "Flutter", icon: "📱", source: "Carpooling Mobile App", usage: "Cross-platform mobile development, UI/UX" },
+      { name: "Three.js", icon: "🌐", source: "3D Online Cinema project", usage: "3D web graphics, WebGL, interactive experiences" },
       { name: "Spring Boot", icon: "🍃", source: "Java backend development", usage: "RESTful services, dependency injection" }
     ],
-    "Tools": [
+    "AI & Machine Learning": [
+      { name: "TensorFlow.js", icon: "🧠", source: "AI Games projects", usage: "Browser-based ML, speech recognition, computer vision" },
+      { name: "PyTerrier", icon: "🔍", source: "Information Retrieval project", usage: "Search engine development, IR evaluation" },
+      { name: "Scikit-learn", icon: "📊", source: "Physiotherapy AI project", usage: "Machine learning, data analysis" },
+      { name: "OpenCV", icon: "👁️", source: "Hand Gesture Game", usage: "Computer vision, image processing" },
+      { name: "MediaPipe", icon: "🖐", source: "Hand Gesture Game", usage: "Hand tracking, gesture recognition" }
+    ],
+    "Tools & Technologies": [
       { name: "Git/GitHub", icon: "📚", source: "Version control in all projects", usage: "Collaborative development, CI/CD pipelines" },
-      { name: "Grafana", icon: "📈", source: "Monitoring at Saydalid", usage: "Data visualization, system monitoring" },
-      { name: "Prometheus", icon: "⚡", source: "System monitoring at work", usage: "Metrics collection, alerting systems" },
       { name: "MongoDB", icon: "🍃", source: "Multiple projects & Work", usage: "NoSQL database design, aggregation pipelines" },
-      { name: "MySQL", icon: "🐬", source: "University & Personal projects", usage: "Relational database design, stored procedures" },
-      { name: "CI/CD", icon: "🔄", source: "Work experience at Saydalid", usage: "Automated deployment, pipeline management" }
+      { name: "MySQL/PostgreSQL", icon: "🐬", source: "Database projects", usage: "Relational database design, stored procedures" },
+      { name: "Docker", icon: "🐳", source: "Development workflow", usage: "Containerization, deployment" },
+      { name: "CI/CD", icon: "🔄", source: "Work experience at Saydalid", usage: "Automated deployment, pipeline management" },
+      { name: "WebRTC", icon: "📹", source: "3D Cinema project", usage: "Real-time communication, video streaming" },
+      { name: "Socket.io", icon: "🔌", source: "Real-time projects", usage: "WebSocket communication, live updates" }
     ]
   };
 
@@ -191,6 +298,17 @@ const Portfolio = () => {
         "Organized 10+ technical workshops and hackathons",
         "Increased club membership by 40%",
         "Established partnerships with tech companies"
+      ]
+    },
+    {
+      title: "2nd Place – Hackathon by Association Talim",
+      period: "2023",
+      description: "Designed and developed an educational game for children to raise awareness about bullying. The game presents interactive scenarios where players choose from three possible actions to deal with bullying situations.",
+      icon: <Trophy size={24} />,
+      highlights: [
+        "Encourages positive decision-making by rewarding correct choices",
+        "Guides players toward empathy and resilience",
+        "Focused on making learning engaging and impactful for young audiences"
       ]
     },
     {
@@ -240,6 +358,9 @@ const Portfolio = () => {
                 {section.label}
               </button>
             ))}
+            <a href="/games" className="nav-button games-link">
+              Games
+            </a>
           </div>
           <div className="mobile-menu">
             <button className="mobile-menu-button">☰</button>
@@ -261,7 +382,12 @@ const Portfolio = () => {
               <button onClick={() => scrollToSection('contact')} className="hero-btn secondary">
                 Contact Me
               </button>
+              <div className="hero-games-invite">
+              <a href="/games" className="games-cta-button">🎮 Play Games</a>
+
             </div>
+            </div>
+           
             <div className="hero-social">
               <a href="https://github.com/chedlyklaa" className="social-link" target="_blank" rel="noopener noreferrer">
                 <Github size={24} />
@@ -396,13 +522,50 @@ const Portfolio = () => {
                       ))}
                     </ul>
                   </div>
-                  <button className="see-more-btn">
-                    See More <ExternalLink size={16} />
-                  </button>
+                  {project.title === "VR & AI-powered Physiotherapy Assistant" ? (
+                    <Link to="/physiotherapy" className="see-more-btn">
+                      See More <ExternalLink size={16} />
+                    </Link>
+                  ) : (
+                    <button className="see-more-btn" disabled>
+                      See More <ExternalLink size={16} />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
           </div>
+          {waitingList.length > 0 && (
+            <div className="waiting-list-section">
+              <h3 className="section-title" style={{marginTop: '2rem'}}>Waiting List</h3>
+              <div className="projects-grid">
+                {waitingList.map((project, index) => (
+                  <div key={index} className="project-card waiting-list-card">
+                    <div className="project-header">
+                      <div className="project-icon">{project.icon}</div>
+                      <h3 className="project-title">{project.title}</h3>
+                    </div>
+                    <p className="project-preview">{project.preview}</p>
+                    <p className="project-description">{project.description}</p>
+                    <div className="project-technologies">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className="tech-badge">{tech}</span>
+                      ))}
+                    </div>
+                    <div className="project-achievements">
+                      <h4>Key Achievements:</h4>
+                      <ul>
+                        {project.achievements.map((achievement, achievementIndex) => (
+                          <li key={achievementIndex}>{achievement}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <span className="waiting-list-label">In Waiting List</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -421,7 +584,7 @@ const Portfolio = () => {
                 </div>
                 <div className="skills-list">
                   {skillList.map((skill, index) => (
-                    <div key={index} className="skill-item" title={`${skill.source} - ${skill.usage}`}>
+                    <div key={index} className="skill-item">
                       <span className="skill-icon">{skill.icon}</span>
                       <span className="skill-name">{skill.name}</span>
                       <div className="skill-tooltip">
