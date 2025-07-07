@@ -81,7 +81,7 @@
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr) !important;
   gap: 4rem;
   max-width: 800px;
   margin: 0 auto;
@@ -172,13 +172,12 @@
   }
   
   .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
-    max-width: 700px;
+    max-width: 400px;
   }
   
   .card-front, .card-back {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .game-start, .game-won {
@@ -192,12 +191,11 @@
 
 @media (max-width: 480px) {
   .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    max-width: 400px;
+    gap: 2rem;
+    max-width: 300px;
   }
   
   .card-front, .card-back {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 } 

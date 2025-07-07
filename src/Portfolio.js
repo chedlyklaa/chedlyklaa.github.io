@@ -362,9 +362,6 @@ const Portfolio = () => {
               Games
             </a>
           </div>
-          <div className="mobile-menu">
-            <button className="mobile-menu-button">☰</button>
-          </div>
         </div>
       </nav>
 
