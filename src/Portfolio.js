@@ -396,7 +396,7 @@ const Portfolio = () => {
           </div>
           <div className="hero-visual">
           <div className="hero-avatar">
-            <img src="https://media.licdn.com/dms/image/v2/C5603AQGTkbBMUh4DmQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1640377800135?e=1756339200&v=beta&t=iAN_oMPw3TNE4WT4la3Lx-_wb1ymTpfOMVBbr3kFPO4" alt="My Avatar" className="avatar-image" />
+            <img src="https://media.licdn.com/dms/image/v2/C5603AQGTkbBMUh4DmQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1640377800135?e=1763596800&v=beta&t=Z7Fl4hQr4eaPzSn3XikV7tN1CpspSBI0cj2WGcJO7nw" alt="My Avatar" className="avatar-image" />
           </div>
           </div>
         </div>
